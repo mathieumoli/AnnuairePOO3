@@ -1,0 +1,45 @@
+<div ng-controller="AddCtrl">
+    <div class="jumbotron">
+        <!-- Bulles -->
+        <h1> Ajout</h1>
+
+        <h2>Que voulez vous ajouter ?</h2>
+
+        <h3> Etudiant</h3>
+        <form>
+
+            <p>
+                Nom :<br><input ng-model="selectedUser.name"><br>
+                Prénom :<br><input ng-model="selectedUser.surname"><br>
+                Email :<br><input ng-model="selectedUser.email"><br>
+                Website:<br><input ng-model="selectedUser.website"><br>
+
+                <button ng-click="addUser(selectedUser)">Ajouter Utilisateur</button>
+            </p>
+            </form>
+            <h4> Rôle : </h4><br>
+            <form><p>
+            Statut: <br><input ng-model="AddRole.name"><br>
+
+            UserId:<br><select  ng-options="user.id for user in users" size="1" ng-model="AddRole.UserId" ng-change="afficherRole(selectedUser)">
+            </select><br>
+            ProjetId:<br><select ng-options="projet.id for projet in projects" size="1" ng-model="AddRole.ProjectId"></select><br>
+            <button ng-click="addRole(AddRole)">Ajouter Rôle</button>
+
+            </p>
+        </form>
+
+        <h3>Projets </h3>
+        <form>
+            <p>
+
+                Titre :<br><input ng-model="selectedProjet.title"><br>
+                Description :<br><textarea ng-model="selectedProjet.description"></textarea><br>
+                Année :<br><input ng-model="selectedProjet.year"><br>
+                <button ng-click="addProjet(selectedProjet)">Ajouter Projet</button>
+
+            </p>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- futur affichage bd-->
+<div ng-controller="MainCtrl">
+<div class="jumbotron">
+    <!-- Bulles -->
+    <h2>Que Recherchez vous ?</h2>
+
+    <h3> Etudiant</h3>
+    <form>
+        <h4> Recherchez par nom de famille : </h4>
+  <select  ng-options="user.name for user in users | filter:selectedUserFirstname.surname" size="1" ng-model="selectedUserName" ng-change="afficherRole(selectedUser)">
+       </select>
+        <h4> Recherchez par prenom : </h4>
+        <select  ng-options="user.surname for user in users | filter:selectedUserName.name" size="1" ng-model="selectedUserFirstname" ng-change="afficherRole(selectedUser)">
+        </select>
+
+
+        <table class="table table-bordered table-hover">
+            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname"><a href="#/{{user.id}}/affiche">
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.website }}</td></a>
+            </tr>
+        </table>
+        </form>
+</div>
+</div>

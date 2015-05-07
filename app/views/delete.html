@@ -1,0 +1,47 @@
+<!-- futur affichage bd-->
+<div ng-controller="DeleteCtrl">
+    <div class="jumbotron">
+        <!-- Bulles -->
+        <h1> Suppression</h1>
+        <h2>Que Recherchez vous ?</h2>
+
+        <h3> Etudiant</h3>
+        <h4> Recherchez par nom de famille : </h4>
+        <form>
+            <select  ng-options="user.name for user in users" size="1" ng-model="selectedUser" ng-change="afficherRole(selectedUser)">
+            </select>
+
+            <p>
+                Nom :<br>{{selectedUser.name}}<br>
+                Prénom :<br>{{selectedUser.surname}}<br>
+                Email :<br>{{selectedUser.email}}<br>
+                Website:<br>{{selectedUser.website}}<br>
+
+                <button ng-click="deleteUser(selectedUser)">Supprimer User</button>
+            </p>
+            <h4> Rôle : </h4><br>
+            <h5> Choisir un projet</h5>
+            <select ng-options="role.ProjectId for role in roles" size="1" ng-model="selectedRole"></select><br>
+            Statut :<br> {{selectedRole.name}}<br>
+            UserId:<br>{{selectedRole.UserId}}<br>
+            ProjetId:<br>{{selectedRole.ProjectId}}<br>
+            <button ng-click="deleteRole(selectedRole)">Supprimer Role</button>
+
+
+        </form>
+
+        <h3>Projets </h3>
+        <form>
+            <select  ng-options="project.title for project in projects" size="1" ng-model="selectedProjet"></select>
+            <p>
+
+                Titre :<br>{{selectedProjet.title}}<br>
+                Description :<br>{{selectedProjet.description}}<br>
+                Année :<br>{{selectedProjet.year}}<br>
+                <button ng-click="deleteProjet(selectedProjet)">Supprimer Projet</button>
+
+            </p>
+        </form>
+
+    </div>
+</div>
