@@ -184,3 +184,96 @@ this.afficherRole=function(user,success,error){
 
 };
 }])
+    //Suppression
+    .service('Suppression', ['$http', function Users($http) {
+
+        this.getUsers=function(user,success,error){
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users')
+                .success(function(data) {
+                    if(data.status==='success'){
+                        success(data.data);
+                    }
+                    else
+                        error(data.data);
+                });
+        }
+
+        this.getProjects=function(user,success,error){
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Projects')
+                .success(function(data) {
+                    if(data.status==='success'){
+                        success(data.data);
+                    }
+                    else
+                        error(data.data);
+                });
+        }
+
+
+        this.deleteUser=function(user){
+
+            $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Users/'+user.id)
+                .success(function(data)
+                {
+                    if (data.status === 'success') {
+                        alert('Suppression de l\'utilisateur fait !');
+                        success(data.data)
+                    } else {
+                        alert('IMPOSSIBLE de faire la suppression de l\'utilisateur !');
+                        error(data.data);
+                    }
+
+                });
+
+        }
+        <!-- marche pas -->
+        this.deleteRole=function(role){
+
+            $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Roles/'+role.id)
+                .success(function(data)
+                {
+                    if (data.status === 'success') {
+                        alert('Suppression du role de l\'utilisateur fait !');
+                        success(data.data)
+                    } else {
+                        alert('IMPOSSIBLE de faire la suppression du role de l\'utilisateur !');
+                        error(data.data);
+
+                    }
+
+                });
+
+        }
+
+
+        this.deleteProjet=function(project){
+
+            $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/'+project.id)
+                .success(function(data)
+                {
+                    if (data.status === 'success') {
+                        alert('Suppression du projet fait !');
+                        success(data.data)
+                    } else {
+                        alert('IMPOSSIBLE de faire la suppression du projet !');
+                        error(data.data);
+                    }
+
+                });
+
+        }
+
+        this.afficherRole=function(user){
+            $scope.currentUser=user;
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/'+user.id+'/Roles')
+                .success(function(data)
+                {
+                    if (data.status === "success") {
+                        $scope.roles = data.data;
+                    }
+
+                });
+
+        };
+
+    }])
