@@ -3,11 +3,9 @@
  */
 
 angular.module('showcaseApp')
+    //Modification
     .service('Modification', ['$http', function Users($http) {
 
-
-
-//Modification
         this.getUsers=function(user,success,error){
             $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users')
                 .success(function(data) {
@@ -93,6 +91,7 @@ this.afficherRole=function(user,success,error){
 
 };
 }])
+    //service d'ajout
 .service('Ajout', ['$http', function Users($http) {
 
         this.getUsers=function(user,success,error){
