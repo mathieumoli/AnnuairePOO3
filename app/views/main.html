@@ -15,11 +15,11 @@
 
 
         <table class="table table-bordered table-hover">
-            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname"><a href="#/{{user.id}}/affiche">
-                <td>{{ user.name }}</td>
-                <td>{{ user.surname }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.website }}</td></a>
+            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname">
+                <td><a href="#/{{user.id}}/affiche">{{ user.name }}</a></td>
+                <td><a href="#/{{user.id}}/affiche">{{ user.surname }}</a></td>
+                <td><a href="#/{{user.id}}/affiche">{{ user.email }}</a></td>
+                <td><a href="#/{{user.id}}/affiche">{{ user.website }}</a></td>
             </tr>
         </table>
         </form>

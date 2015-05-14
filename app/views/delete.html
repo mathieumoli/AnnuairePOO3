@@ -21,11 +21,13 @@
             </p>
             <h4> Rôle : </h4><br>
             <h5> Choisir un projet</h5>
-            <select ng-options="role.ProjectId for role in roles" size="1" ng-model="selectedRole"></select><br>
+            <select  ng-options="user.name for user in users" size="1" ng-model="selectedUser" ng-change="afficherRole(selectedUser)">
+        </select><br>
+            <select ng-options="role.ProjectId for role in roles | filter:selectedUser.id" size="1" ng-model="selectedRole"></select><br>
             Statut :<br> {{selectedRole.name}}<br>
             UserId:<br>{{selectedRole.UserId}}<br>
             ProjetId:<br>{{selectedRole.ProjectId}}<br>
-            <button ng-click="deleteRole(selectedRole)">Supprimer Role</button>
+            <button ng-click="deleteRole(selectedUser,selectedRole)">Supprimer Role</button>
 
 
         </form>

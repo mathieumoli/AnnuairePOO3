@@ -133,9 +133,9 @@ this.addUser=function(user,success,error){
 
 }
 <!-- marche pas -->
-this.addRole=function(role,success,error){
+this.addRole=function(user,project,success,error){
 
-    $http.post('http://poo-ihm-2015-rest.herokuapp.com/api/User/'+role.UserId+'/Role/',role)
+    $http.post('http://poo-ihm-2015-rest.herokuapp.com/api/User/'+user.id+'/Role/',role)
         .success(function(data)
         {
             if (data.status === 'success') {
@@ -209,6 +209,16 @@ this.afficherRole=function(user,success,error){
                 });
         }
 
+        this.getRoles=function(user,success,error){
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Roles')
+                .success(function(data) {
+                    if(data.status==='success'){
+                        success(data.data);
+                    }
+                    else
+                        error(data.data);
+                });
+        }
 
         this.deleteUser=function(user){
 
@@ -227,9 +237,9 @@ this.afficherRole=function(user,success,error){
 
         }
         <!-- marche pas -->
-        this.deleteRole=function(role){
+        this.deleteRole=function(user,role){
 
-            $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Roles/'+role.id)
+            $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/'+role.ProjectId+'/Users/'+user.id)
                 .success(function(data)
                 {
                     if (data.status === 'success') {
@@ -275,5 +285,60 @@ this.afficherRole=function(user,success,error){
                 });
 
         };
+
+    }])
+
+    .service('Affiche', ['$http', function Users($http) {
+        this.getCurrentUser=function(id,success,error){
+
+                $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id)
+                    .success(function(data) {
+                        if (data.status == "success") {
+                            success(data.data);
+                        }else
+                            error(data.data);
+
+                    });
+
+        }
+
+        this.getRoleUser=function(id,success,error){
+
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id+'/Roles')
+                .success(function(data) {
+                    if (data.status == "success") {
+                        success(data.data);
+                    }else
+                        error(data.data);
+
+                });
+        }
+
+        this.getProjects=function(ProjectId,success,error){
+
+
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/' + ProjectId)
+                .success(function(data) {
+                    if (data.status == "success") {
+                        success(data.data);
+                    }else
+                        error(data.data);
+
+                });
+        }
+
+        this.getUsersOfProject=function(id,success,error){
+            $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/' + id+'/Users/')
+                .success(function(data)
+            {
+                if (data.status == "success") {
+                    success(data.data);
+                } else{
+                    error(data.data);}
+
+            });
+
+    }
+
 
     }])

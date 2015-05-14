@@ -21,10 +21,10 @@
             <form><p>
             Statut: <br><input ng-model="AddRole.name"><br>
 
-            UserId:<br><select  ng-options="user.id for user in users" size="1" ng-model="AddRole.UserId" ng-change="afficherRole(selectedUser)">
+            UserId:<br><select  ng-options="user.name for user in users" size="1" ng-model="userForRole" ng-change="afficherRole(selectedUser)">
             </select><br>
-            ProjetId:<br><select ng-options="projet.id for projet in projects" size="1" ng-model="AddRole.ProjectId"></select><br>
-            <button ng-click="addRole(AddRole)">Ajouter Rôle</button>
+            ProjetId:<br><select ng-options="projet.title for projet in projects" size="1" ng-model="projectForRole"></select><br>
+            <button ng-click="addRole(userforRole,projectforRole)">Ajouter Rôle</button>
 
             </p>
         </form>

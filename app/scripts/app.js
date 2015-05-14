@@ -32,7 +32,7 @@ var app=angular
         controller: 'DeleteCtrl'
       })
         .when('/:userId/affiche',{
-        templateUrl:'view/affiche.html',
+        templateUrl:'views/affiche.html',
         controller:'AfficheCtrl'
         })
       .when('/edit', {
