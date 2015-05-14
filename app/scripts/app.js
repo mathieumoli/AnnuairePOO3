@@ -39,6 +39,10 @@ var app=angular
         templateUrl: 'views/edit.html',
         controller: 'EditCtrl'
       })
+      .when('/projet', {
+          templateUrl: 'views/projet.html',
+          controller: 'ProjectCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'

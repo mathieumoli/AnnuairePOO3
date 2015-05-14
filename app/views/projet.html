@@ -1,0 +1,17 @@
+<div ng-controller="ProjectCtrl">
+    <div class="jumbotron">
+        <h4> Recherchez par nom de projet : </h4>
+        <select  ng-options="project.title for project in projects " size="1" ng-model="selectedProject" ng-change="getUsersOfProject(selectedProject)">
+        </select>
+        <!-- a mettre en place-->
+        Equipe du Projet
+        <table ng-repeat="person in team">
+            <tr>
+                <td><a href="#/{{person.id}}/affiche">{{ person.name }}</a></td>
+                <td><a href="#/{{person.id}}/affiche">{{ person.surname }}</a></td>
+                <td><a href="#/{{person.id}}/affiche">{{ person.email }}</a></td>
+                <td><a href="#/{{person.id}}/affiche">{{ person.website }}</a></td>
+            </tr>
+        </table>
+        </div>
+</div>
