@@ -17,24 +17,36 @@ angular.module('showcaseApp')
 
         Ajout.getUsers(0,function(data){$scope.users=data},function(data){})
         Ajout.getProjects(0,function(data){$scope.projects=data},function(data){})
-
-
         $scope.addUser=function(user){
             Ajout.addUser(user);
 
 
         }
 
-        $scope.addRole=function(role,user,project){
-            role.UserId=user.id;
-            role.ProjectId=project.id;
-            Ajout.addRole(role,function(data){},function(data){});
+        $scope.addRole=function(role,user,project) {
+
+            if (user.id ==null ) {
+                alert('Vous devez selectionner un utilisateur');
+            } else {
+                if (project.id == null) {
+                    alert('Vous devez selectionner un projet')
+                } else {
 
 
+                    role.UserId = user.id;
+                    role.ProjectId = project.id;
+                    Ajout.addRole(role, function (data) {
+                    }, function (data) {
+                    });
+                }
+            }
         }
 
 
         $scope.addProjet=function(project){
+            if(project.year<1){
+                alert("c'est un projet qui a eu lieu avant JC ? Impossible de l'ajouter")
+            }else
             Ajout.addProjet(project);
 
 
