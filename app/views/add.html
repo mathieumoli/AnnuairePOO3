@@ -6,37 +6,38 @@
         <h2>Que voulez vous ajouter ?</h2>
 
         <h3> Etudiant</h3>
-        <form>
+        <form name="FormAddUser">
 
+
+            Nom*:<br><input ng-model="FormAddUser.selectedUser.name" required ng-minlength="2" ng-maxlength="20"/><br>
+            Prénom*:<br><input ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2" ng-maxlength="20"/><br>
+            Email:<br><input ng-model="FormAddUser.selectedUser.email" type="email"/><div ng-messages="FormAddUser.mail.$error" ng-messages-include="erreurs.html"></div><br>
+            Website:<br><input ng-model="FormAddUser.selectedUser.website",  type="url"/><div ng-messages="FormAddUser.website.$error" ng-messages-include="erreurs.html"></div><br>
+
+            <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur</button>
+
+        </form>
+        <h4> Rôle : </h4><br>
+        <form name="FormAddRole">
             <p>
-                Nom :<br><input ng-model="selectedUser.name"><br>
-                Prénom :<br><input ng-model="selectedUser.surname"><br>
-                Email :<br><input ng-model="selectedUser.email"><br>
-                Website:<br><input ng-model="selectedUser.website"><br>
+                Statut*: <br><input required ng-minlength="2" ng-model="FormAddRole.role.name"><br>
 
-                <button ng-click="addUser(selectedUser)">Ajouter Utilisateur</button>
-            </p>
-            </form>
-            <h4> Rôle : </h4><br>
-            <form><p>
-            Statut: <br><input ng-model="AddRole.name"><br>
-
-            UserId:<br><select  ng-options="user.name for user in users" size="1" ng-model="userForRole" ng-change="afficherRole(selectedUser)">
+                Nom de l'utilisateur*:<br><select  required ng-options="user.name for user in users" size="1" ng-model="FormAddRole.user">
             </select><br>
-            ProjetId:<br><select ng-options="projet.title for projet in projects" size="1" ng-model="projectForRole"></select><br>
-            <button ng-click="addRole(userforRole,projectforRole)">Ajouter Rôle</button>
+                Nom du projet*:<br><select required ng-options="projet.title for projet in projects" size="1" ng-model="FormAddRole.project"></select><br>
+                <button ng-disabled="!FormAddRole.$valid" ng-click="addRole(FormAddRole.role,FormAddRole.user,FormAddRole.project)">Ajouter Rôle</button>
 
             </p>
         </form>
 
         <h3>Projets </h3>
-        <form>
+        <form name="FormAddProject">
             <p>
 
-                Titre :<br><input ng-model="selectedProjet.title"><br>
-                Description :<br><textarea ng-model="selectedProjet.description"></textarea><br>
-                Année :<br><input ng-model="selectedProjet.year"><br>
-                <button ng-click="addProjet(selectedProjet)">Ajouter Projet</button>
+                Titre* :<br><input required ng-model="FormAddProject.selectedProjet.title"><br>
+                Description* :<br><textarea required ng-minlength="2" ng-model="FormAddProject.selectedProjet.description"></textarea><br>
+                Année* :<br><input required ng-model="FormAddProject.selectedProjet.year"><br>
+                <button ng-disabled="!FormAddProject.$valid" ng-click="addProjet(FormAddProject.selectedProjet)">Ajouter Projet</button>
 
             </p>
         </form>

@@ -24,9 +24,11 @@ angular.module('showcaseApp')
 
 
         }
-        <!-- marche pas -->
-        $scope.addRole=function(role){
-            Ajout.addRole(role);
+
+        $scope.addRole=function(role,user,project){
+            role.UserId=user.id;
+            role.ProjectId=project.id;
+            Ajout.addRole(role,function(data){},function(data){});
 
 
         }

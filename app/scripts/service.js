@@ -132,17 +132,16 @@ angular.module('showcaseApp')
                 });
 
         }
-        <!-- marche pas -->
-        this.addRole=function(user,project,success,error){
 
-            $http.post(adresse+'User/'+user.id+'/Role/',role)
+        this.addRole=function(role,success,error){
+            $http.post(adresse+'Roles/',role)
                 .success(function(data)
                 {
                     if (data.status === 'success') {
                         alert('Ajout du role de l\'utilisateur fait !');
                         success(data.data)
                     } else {
-                        alert('IMPOSSIBLE de faire l\'ajout du role de l\'utilisateur !');
+                        alert('IMPOSSIBLE de faire l\'ajout du role de l\'utilisateur !'+data.error);
                         error(data.data);
 
                     }
