@@ -6,13 +6,35 @@
         <h2>Que voulez vous ajouter ?</h2>
 
         <h3> Etudiant</h3>
-        <form name="FormAddUser">
+        <form name="FormAddUser" novalidate>
 
 
-            Nom*:<br><input ng-model="FormAddUser.selectedUser.name" required ng-minlength="2" ng-maxlength="20"/><br>
-            Prénom*:<br><input ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2" ng-maxlength="20"/><br>
-            Email:<br><input ng-model="FormAddUser.selectedUser.email" type="email"/><div ng-messages="FormAddUser.mail.$error" ng-messages-include="erreurs.html"></div><br>
-            Website:<br><input ng-model="FormAddUser.selectedUser.website",  type="url"/><div ng-messages="FormAddUser.website.$error" ng-messages-include="erreurs.html"></div><br>
+            Nom*:<br><input name="nom" ng-model="FormAddUser.selectedUser.name" required ng-minlength="2" ng-maxlength="20"/>
+            <span ng-show="FormAddUser.nom.$error.required"><br>Champs obligatoire</span>
+            <span ng-show="FormAddUser.nom.$error.minlength"><br>Le nom est trop court</span>
+            <span ng-show="FormAddUser.nom.$error.maxlength"><br>Le nom est trop long</span>
+            <span ng-show="FormAddUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+
+            </span><br>
+            Prénom*:<br><input name="prenom" ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2" ng-maxlength="20"/>
+            <span ng-show="FormAddUser.prenom.$error.required"><br>Champs obligatoire</span>
+            <span ng-show="FormAddUser.prenom.$error.minlength"><br>Le prénom est trop court</span>
+            <span ng-show="FormAddUser.prenom.$error.maxlength"><br>Le prénom est trop long</span>
+            <span ng-show="FormAddUser.prenom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+
+            </span><br>
+
+            Email:<br><input name="email" ng-model="FormAddUser.selectedUser.email" type="email"/><span ng-show="FormAddUser.email.$dirty">
+            <span ng-show="FormAddUser.email.$error.required"><br>Champs obligatoire</span>
+            <span ng-show="FormAddUser.email.$error.email"><br>L'email n'est pas correct</span>
+            <span ng-show="FormAddUser.email.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+
+            </span><br>
+            Website:<br><input name="website"ng-model="FormAddUser.selectedUser.website",  type="url"/>
+            <span ng-show="FormAddUser.website.$error.url"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
+            <span ng-show="FormAddUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+
+            </span><br>
 
             <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur</button>
 
@@ -20,11 +42,25 @@
         <h4> Rôle : </h4><br>
         <form name="FormAddRole">
             <p>
-                Statut*: <br><input required ng-minlength="2" ng-model="FormAddRole.role.name"><br>
-
-                Nom de l'utilisateur*:<br><select  required ng-options="user.name for user in users" size="1" ng-model="FormAddRole.user">
-            </select><br>
-                Nom du projet*:<br><select required ng-options="projet.title for projet in projects" size="1" ng-model="FormAddRole.project"></select><br>
+                Statut*: <br><input name="statut"required ng-minlength="2" ng-model="FormAddRole.role.name">
+                <span ng-show="FormAddRole.statut.$dirty">
+                    <span ng-show="FormAddRole.statut.$error.required"><br>Champs obligatoire</span>
+                    <span ng-show="FormAddRole.statut.$error.minlength"><br>Le role est trop court</span>
+                    <span ng-show="FormAddRole.statut.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
+                <br>
+                Nom de l'utilisateur:<br><select name="user" required ng-options="user.name for user in users" ng-model="FormAddRole.user"></select>
+                <span ng-show="FormAddRole.user.$dirty">
+                    <span ng-show="FormAddRole.user.$error.required"><br>Champs obligatoire</span>
+                    <span ng-show="FormAddRole.user.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
+                <br>
+                Nom du projet:<br><select name="project" required ng-options="projet.title for projet in projects" size="1" ng-model="FormAddRole.project"></select>
+                <span ng-show="FormAddRole.project.$dirty">
+                    <span ng-show="FormAddRole.project.$error.required"><br>Champs obligatoire</span>
+                    <span ng-show="FormAddRole.project.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
+                <br>
                 <button ng-disabled="!FormAddRole.$valid" ng-click="addRole(FormAddRole.role,FormAddRole.user,FormAddRole.project)">Ajouter Rôle</button>
 
             </p>
@@ -34,9 +70,25 @@
         <form name="FormAddProject">
             <p>
 
-                Titre* :<br><input required ng-model="FormAddProject.selectedProjet.title"><br>
-                Description* :<br><textarea required ng-minlength="2" ng-model="FormAddProject.selectedProjet.description"></textarea><br>
-                Année* :<br><input required ng-model="FormAddProject.selectedProjet.year"><br>
+                Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.title">
+                <span ng-show="FormAddProject.titre.$dirty">
+                    <span ng-show="FormAddProject.titre.$error.required"><br>Champs obligatoire</span>
+                    <span ng-show="FormAddProject.titre.$error.minlength"><br>le titre est trop court</span>
+                    <span ng-show="FormAddProject.titre.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
+                <br>
+                Description* :<br><textarea name="description" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.description"></textarea>
+                 <span ng-show="FormAddProject.description.$dirty">
+                     <span ng-show="FormAddProject.description.$error.required"><br>Champs obligatoire</span>
+                     <span ng-show="FormAddProject.description.$error.minlength"><br>la description est trop court</span>
+                     <span ng-show="FormAddProject.description.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
+                <br>
+                Année* :<br><input name="year" required ng-model="FormAddProject.selectedProjet.year" type="number"><span ng-show="FormAddProject.description.$dirty">
+                     <span ng-show="FormAddProject.year.$error.number"><br>Il s'agit d'un chiffre</span>
+                     <span ng-show="FormAddProject.year.$error.required"><br>Champs obligatoire</span>
+                     <span ng-show="FormAddProject.year.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                </span>
                 <button ng-disabled="!FormAddProject.$valid" ng-click="addProjet(FormAddProject.selectedProjet)">Ajouter Projet</button>
 
             </p>
