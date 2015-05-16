@@ -54,3 +54,5 @@ verifier les selects. Je vérifie donc après le clic sur le bouton.
 * Mise en place dans Ajout, et Main (affichage de tous les Users),Suppression
 
 * Ajout d'un input de recherche pour l'utilisateur
+
+##Affichage Projet OPERATIONNEL revoir peut être l'affichage du tableau

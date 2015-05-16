@@ -1,11 +1,9 @@
 <div ng-controller="AddCtrl">
-    <div class="jumbotron">
-        <!-- Bulles -->
         <h1> Ajout</h1>
 
         <h2>Que voulez vous ajouter ?</h2>
 
-        <h3> Etudiant</h3>
+        <h3 class="h3title" > Etudiant : </h3>
         <form name="FormAddUser" novalidate>
 
 
@@ -39,7 +37,8 @@
             <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur</button>
 
         </form>
-        <h4> Rôle : </h4><br>
+
+        <h3 class="h3title" > Rôle : </h3>
         <form name="FormAddRole">
             <p>
                 Statut*: <br><input name="statut"required ng-minlength="2" ng-model="FormAddRole.role.name">
@@ -66,7 +65,7 @@
             </p>
         </form>
 
-        <h3>Projets </h3>
+        <h3 class="h3title" >Projets : </h3>
         <form name="FormAddProject">
             <p>
 
@@ -88,11 +87,10 @@
                      <span ng-show="FormAddProject.year.$error.number"><br>Il s'agit d'un chiffre</span>
                      <span ng-show="FormAddProject.year.$error.required"><br>Champs obligatoire</span>
                      <span ng-show="FormAddProject.year.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
-                </span>
+                </span><br><br>
                 <button ng-disabled="!FormAddProject.$valid" ng-click="addProjet(FormAddProject.selectedProjet)">Ajouter Projet</button>
 
             </p>
         </form>
 
     </div>
-</div>
