@@ -7,15 +7,19 @@
     <h3> Etudiant</h3>
     <form>
         <h4> Recherchez par nom de famille : </h4>
-  <select  ng-options="user.name for user in users | filter:selectedUserFirstname.surname" size="1" ng-model="selectedUserName" ng-change="afficherRole(selectedUser)">
+        <h5> Dans la liste : </h5>
+  <select  ng-options="user.name for user in users | filter:selectedUserFirstname.surname | filter:searchedName" size="1" ng-model="selectedUserName" ng-change="afficherRole(selectedUser)">
        </select>
         <h4> Recherchez par prenom : </h4>
         <select  ng-options="user.surname for user in users | filter:selectedUserName.name" size="1" ng-model="selectedUserFirstname" ng-change="afficherRole(selectedUser)">
         </select>
 
+        <h5> En le tapant : </h5>
+        <input ng-model="searchedName"/>
+
 
         <table class="table table-bordered table-hover">
-            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname">
+            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname | filter:searchedName" >
                 <td><a href="#/{{user.id}}/affiche">{{ user.name }}</a></td>
                 <td><a href="#/{{user.id}}/affiche">{{ user.surname }}</a></td>
                 <td><a href="#/{{user.id}}/affiche">{{ user.email }}</a></td>
