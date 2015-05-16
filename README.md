@@ -63,3 +63,7 @@ verifier les selects. Je vérifie donc après le clic sur le bouton.
  affecté à un utilisateur pour un projet (cela semble logique...)
 
 ##Suppression OPERATIONNELLE
+
+##Nom Explicite pour les fonctions des services
+
+#Refactor de code

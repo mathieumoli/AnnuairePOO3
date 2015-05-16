@@ -1,101 +1,115 @@
 <div ng-controller="EditCtrl">
 
-        <h1> Modification</h1>
+    <h1> Modification</h1>
 
-        <h2>Que voulez vous modifier ?</h2>
+    <h2>Que voulez vous modifier ?</h2>
 
-        <h3 class="h3title"> Etudiant</h3>
-        <h4> Recherchez dans les listes :</h4>
-        <form name="FormEditUser" novalidate>
-            Nom de famille<br>
-            <select  ng-options="user.name for user in users | filter:FormEditUser.selectedUser.surname | filter:searchedName" size="1" ng-model="FormEditUser.selectedUser" >
-            </select><br>
-            Prenom<br>
-            <select  ng-options="user.surname for user in users | filter:FormEditUser.selectedUser.name | filter:searchedName" size="1" ng-model="FormEditUser.selectedUser" >
-            </select><br>
+    <h3 class="h3title"> Etudiant</h3>
+    <h4> Recherchez dans les listes :</h4>
 
-            <h4> Ou en le tapant : </h4>
-            <input ng-model="searchedName"/><br>
+    <form name="FormEditUser" novalidate>
+        Nom de famille<br>
+        <select ng-options="user.name for user in users | filter:FormEditUser.selectedUser.surname | filter:searchedName"
+                size="1" ng-model="FormEditUser.selectedUser">
+        </select><br>
+        Prenom<br>
+        <select ng-options="user.surname for user in users | filter:FormEditUser.selectedUser.name | filter:searchedName"
+                size="1" ng-model="FormEditUser.selectedUser">
+        </select><br>
+
+        <h4> Ou en le tapant : </h4>
+        <input ng-model="searchedName"/><br>
 
 
-                Nom* :<br><input name="nom" ng-model="FormEditUser.selectedUser.name" required ng-minlength="2" ng-maxlength="20"/>
-            <span ng-show="FormEditUser.nom.$error.required" class="faux"><br>Champs obligatoire</span>
-            <span ng-show="FormEditUser.nom.$error.minlength" class="faux"><br>Le nom est trop court</span>
-            <span ng-show="FormEditUser.nom.$error.maxlength" class="faux"><br>Le nom est trop long</span>
-            <span ng-show="FormEditUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        Nom* :<br><input name="nom" ng-model="FormEditUser.selectedUser.name" required ng-minlength="2"
+                         ng-maxlength="20"/>
+        <span ng-show="FormEditUser.nom.$error.required" class="faux"><br>Champs obligatoire</span>
+        <span ng-show="FormEditUser.nom.$error.minlength" class="faux"><br>Le nom est trop court</span>
+        <span ng-show="FormEditUser.nom.$error.maxlength" class="faux"><br>Le nom est trop long</span>
+        <span ng-show="FormEditUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
-            Prénom* :<br><input name="prenom" ng-model="FormEditUser.selectedUser.surname" required ng-minlength="2" ng-maxlength="20"/>
-            <span ng-show="FormEditUser.prenom.$error.required" class="faux"><br>Champs obligatoire</span>
-            <span ng-show="FormEditUser.prenom.$error.minlength" class="faux"><br>Le prénom est trop court</span>
-            <span ng-show="FormEditUser.prenom.$error.maxlength" class="faux"><br>Le prénom est trop long</span>
-            <span ng-show="FormEditUser.prenom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        </span><br>
+        Prénom* :<br><input name="prenom" ng-model="FormEditUser.selectedUser.surname" required ng-minlength="2"
+                            ng-maxlength="20"/>
+        <span ng-show="FormEditUser.prenom.$error.required" class="faux"><br>Champs obligatoire</span>
+        <span ng-show="FormEditUser.prenom.$error.minlength" class="faux"><br>Le prénom est trop court</span>
+        <span ng-show="FormEditUser.prenom.$error.maxlength" class="faux"><br>Le prénom est trop long</span>
+        <span ng-show="FormEditUser.prenom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
-            Email :<br><input name="email" ng-model="FormEditUser.selectedUser.email" type="email"/>
+        </span><br>
+        Email :<br><input name="email" ng-model="FormEditUser.selectedUser.email" type="email"/>
             <span ng-show="FormEditUser.email.$dirty">
             <span ng-show="FormEditUser.email.$error.email" class="faux"><br>L'email n'est pas correct</span>
             <span ng-show="FormEditUser.email.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
             </span><br>
-            Website:<br><input name="website" ng-model="FormEditUser.selectedUser.website"  type="url"/>
-            <span ng-show="FormEditUser.website.$error.url" class="faux"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
-            <span ng-show="FormEditUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        Website:<br><input name="website" ng-model="FormEditUser.selectedUser.website" type="url"/>
+        <span ng-show="FormEditUser.website.$error.url" class="faux"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
+        <span ng-show="FormEditUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
-                <button ng-disabled="!FormEditUser.$valid" ng-click="modifierUser(FormEditUser.selectedUser)">Modifier</button>
+        </span><br>
+        <button ng-disabled="!FormEditUser.$valid" ng-click="modifierUser(FormEditUser.selectedUser)">Modifier</button>
 
-            </form>
-            <h3 class="h3title"> Rôle:</h3><br>
+    </form>
+    <h3 class="h3title"> Rôle:</h3><br>
+
     <form name="FormEditRole" novalidate>
         Choisir un utilisateur par son nom*<br>
-    <select  ng-options="user.name for user in users" size="1" ng-model="FormEditRole.selectedUser" ng-change="afficherProjet(FormEditRole.selectedUser)">
-    </select><br>
-            <h5> Choisir un projet*</h5>
+        <select ng-options="user.name for user in users" size="1" ng-model="FormEditRole.selectedUser"
+                ng-change="afficherProjet(FormEditRole.selectedUser)">
+        </select><br>
+        <h5> Choisir un projet*</h5>
 
-            <select ng-options="project.title for project in projectsUser" ng-model="FormEditRole.selectedProject" ng-change="afficherRole(FormEditRole.selectedUser,FormEditRole.selectedProject)"></select><br>
-            Statut* :<br> <input required name="statut" value='{{role.name}}'ng-model="FormEditRole.name">
+        <select ng-options="project.title for project in projectsUser" ng-model="FormEditRole.selectedProject"
+                ng-change="afficherRole(FormEditRole.selectedUser,FormEditRole.selectedProject)"></select><br>
+        Statut* :<br> <input required name="statut" value='{{role.name}}' ng-model="FormEditRole.name">
              <span ng-show="FormEditRole.statut.$dirty">
                     <span ng-show="FormEditRole.statut.$error.required" class="faux"><br>Champs obligatoire</span>
                     <span ng-show="FormEditRole.statut.$error.minlength" class="faux"><br>Le role est trop court</span>
                     <span ng-show="FormEditRole.statut.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-            <br>
-            <button ng-disabled="!FormEditRole.$valid" ng-click="modifierRole(FormEditRole.name)">Modifier Rôle</button>
+        <br>
+        <button ng-disabled="!FormEditRole.$valid" ng-click="modifierRole(FormEditRole.name)">Modifier Rôle</button>
 
 
-        </form>
+    </form>
 
-        <h3 class="h3title">Projets </h3>
-        <form name="FormEditProject" novalidate>
-            <select  ng-options="project.title for project in projects" ng-model="FormEditProject.selectedProjet"></select>
-            <p>
+    <h3 class="h3title">Projets </h3>
 
-                Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormEditProject.selectedProjet.title">
+    <form name="FormEditProject" novalidate>
+        <select ng-options="project.title for project in projects" ng-model="FormEditProject.selectedProjet"></select>
+
+        <p>
+
+            Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormEditProject.selectedProjet.title">
                  <span ng-show="FormEditProject.titre.$dirty">
                     <span ng-show="FormEditProject.titre.$error.required" class="faux"><br>Champs obligatoire</span>
-                    <span ng-show="FormEditProject.titre.$error.minlength" class="faux"><br>le titre est trop court</span>
+                    <span ng-show="FormEditProject.titre.$error.minlength"
+                          class="faux"><br>le titre est trop court</span>
                     <span ng-show="FormEditProject.titre.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Description* :<br><textarea name="description" ng-minlength="2" required ng-model="FormEditProject.selectedProjet.description"></textarea>
+            <br>
+            Description* :<br><textarea name="description" ng-minlength="2" required
+                                        ng-model="FormEditProject.selectedProjet.description"></textarea>
                 <span ng-show="FormEditProject.description.$dirty">
-                     <span ng-show="FormEditProject.description.$error.required" class="faux"><br>Champs obligatoire</span>
+                     <span ng-show="FormEditProject.description.$error.required"
+                           class="faux"><br>Champs obligatoire</span>
                      <span ng-show="FormEditProject.description.$error.minlength" class="faux"><br>la description est trop court</span>
-                     <span ng-show="FormEditProject.description.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                     <span ng-show="FormEditProject.description.$valid"><i
+                             class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Année* :<br><input name="year" required ng-model="FormEditProject.selectedProjet.year">
+            <br>
+            Année* :<br><input name="year" required ng-model="FormEditProject.selectedProjet.year">
                 <span ng-show="FormEditProject.year.$dirty">
                      <span ng-show="FormEditProject.year.$error.number" class="faux"><br>Il s'agit d'un chiffre</span>
                      <span ng-show="FormEditProject.year.$error.required" class="faux"><br>Champs obligatoire</span>
                      <span ng-show="FormEditProject.year.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span><br>
-                <button ng-click="modifierProjet(FormEditProject.selectedProjet)">Modifier Projet</button>
+            <button ng-click="modifierProjet(FormEditProject.selectedProjet)">Modifier Projet</button>
 
-            </p>
-        </form>
-        <p>*champs requis</p>
+        </p>
+    </form>
+    <p>*champs requis</p>
 
-    </div>
+</div>
 </div>

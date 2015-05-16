@@ -51,9 +51,4 @@ angular.module('showcaseApp')
             }
         }
 
-        $scope.afficherRole=function(user){
-            Ajout.afficherRole(user);
-
-
-        };
     }]);

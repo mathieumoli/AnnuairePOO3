@@ -1,96 +1,113 @@
 <div ng-controller="AddCtrl">
-        <h1> Ajout</h1>
+    <h1> Ajout</h1>
 
-        <h2>Que voulez vous ajouter ?</h2>
+    <h2>Que voulez vous ajouter ?</h2>
 
-        <h3 class="h3title" > Etudiant : </h3>
-        <form name="FormAddUser" novalidate>
+    <h3 class="h3title"> Etudiant : </h3>
+
+    <form name="FormAddUser" novalidate>
 
 
-            Nom*:<br><input name="nom" ng-model="FormAddUser.selectedUser.name" required ng-minlength="2" ng-maxlength="20"/>
-            <span ng-show="FormAddUser.nom.$error.required" class="faux"><br>Champs obligatoire</span>
-            <span ng-show="FormAddUser.nom.$error.minlength" class="faux"><br>Le nom est trop court</span>
-            <span ng-show="FormAddUser.nom.$error.maxlength" class="faux"><br>Le nom est trop long</span>
-            <span ng-show="FormAddUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        Nom*:<br><input name="nom" ng-model="FormAddUser.selectedUser.name" required ng-minlength="2"
+                        ng-maxlength="20"/>
+        <span ng-show="FormAddUser.nom.$error.required" class="faux"><br>Champs obligatoire</span>
+        <span ng-show="FormAddUser.nom.$error.minlength" class="faux"><br>Le nom est trop court</span>
+        <span ng-show="FormAddUser.nom.$error.maxlength" class="faux"><br>Le nom est trop long</span>
+        <span ng-show="FormAddUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
-            Prénom*:<br><input name="prenom" ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2" ng-maxlength="20"/>
-            <span ng-show="FormAddUser.prenom.$error.required" class="faux"><br>Champs obligatoire</span>
-            <span ng-show="FormAddUser.prenom.$error.minlength" class="faux"><br>Le prénom est trop court</span>
-            <span ng-show="FormAddUser.prenom.$error.maxlength" class="faux"><br>Le prénom est trop long</span>
-            <span ng-show="FormAddUser.prenom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        </span><br>
+        Prénom*:<br><input name="prenom" ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2"
+                           ng-maxlength="20"/>
+        <span ng-show="FormAddUser.prenom.$error.required" class="faux"><br>Champs obligatoire</span>
+        <span ng-show="FormAddUser.prenom.$error.minlength" class="faux"><br>Le prénom est trop court</span>
+        <span ng-show="FormAddUser.prenom.$error.maxlength" class="faux"><br>Le prénom est trop long</span>
+        <span ng-show="FormAddUser.prenom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
+        </span><br>
 
-            Email:<br><input name="email" ng-model="FormAddUser.selectedUser.email" type="email"/>
+        Email:<br><input name="email" ng-model="FormAddUser.selectedUser.email" type="email"/>
             <span ng-show="FormAddUser.email.$dirty">
             <span ng-show="FormAddUser.email.$error.email" class="faux"><br>L'email n'est pas correct</span>
             <span ng-show="FormAddUser.email.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
             </span><br>
-            Website:<br><input name="website"ng-model="FormAddUser.selectedUser.website"  type="url"/>
-            <span ng-show="FormAddUser.website.$error.url" class="faux"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
-            <span ng-show="FormAddUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+        Website:<br><input name="website" ng-model="FormAddUser.selectedUser.website" type="url"/>
+        <span ng-show="FormAddUser.website.$error.url" class="faux"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
+        <span ng-show="FormAddUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-            </span><br>
+        </span><br>
 
-            <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur</button>
+        <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur
+        </button>
 
-        </form>
+    </form>
 
-        <h3 class="h3title" > Rôle : </h3>
-        <form name="FormAddRole">
-            <p>
-                Statut*: <br><input name="statut"required ng-minlength="2" ng-model="FormAddRole.role.name">
+    <h3 class="h3title"> Rôle : </h3>
+
+    <form name="FormAddRole">
+        <p>
+            Statut*: <br><input name="statut" required ng-minlength="2" ng-model="FormAddRole.role.name">
                 <span ng-show="FormAddRole.statut.$dirty">
                     <span ng-show="FormAddRole.statut.$error.required" class="faux"><br>Champs obligatoire</span>
                     <span ng-show="FormAddRole.statut.$error.minlength" class="faux"><br>Le role est trop court</span>
                     <span ng-show="FormAddRole.statut.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Nom de l'utilisateur:<br><select name="user" required ng-options="user.name for user in users" ng-model="FormAddRole.user"></select>
+            <br>
+            Nom de l'utilisateur:<br><select name="user" required ng-options="user.name for user in users"
+                                             ng-model="FormAddRole.user"></select>
                 <span ng-show="FormAddRole.user.$dirty">
                     <span ng-show="FormAddRole.user.$error.required" class="faux"><br>Champs obligatoire</span>
                     <span ng-show="FormAddRole.user.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Nom du projet:<br><select name="project" required ng-options="projet.title for projet in projects" size="1" ng-model="FormAddRole.project"></select>
+            <br>
+            Nom du projet:<br><select name="project" required ng-options="projet.title for projet in projects" size="1"
+                                      ng-model="FormAddRole.project"></select>
                 <span ng-show="FormAddRole.project.$dirty">
                     <span ng-show="FormAddRole.project.$error.required" class="faux"><br>Champs obligatoire</span>
                     <span ng-show="FormAddRole.project.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                <button ng-disabled="!FormAddRole.$valid" ng-click="addRole(FormAddRole.role,FormAddRole.user,FormAddRole.project)">Ajouter Rôle</button>
+            <br>
+            <button ng-disabled="!FormAddRole.$valid"
+                    ng-click="addRole(FormAddRole.role,FormAddRole.user,FormAddRole.project)">Ajouter Rôle
+            </button>
 
-            </p>
-        </form>
+        </p>
+    </form>
 
-        <h3 class="h3title" >Projets : </h3>
-        <form name="FormAddProject">
-            <p>
+    <h3 class="h3title">Projets : </h3>
 
-                Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.title">
+    <form name="FormAddProject">
+        <p>
+
+            Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.title">
                 <span ng-show="FormAddProject.titre.$dirty">
                     <span ng-show="FormAddProject.titre.$error.required" class="faux"><br>Champs obligatoire</span>
-                    <span ng-show="FormAddProject.titre.$error.minlength" class="faux"><br>le titre est trop court</span>
+                    <span ng-show="FormAddProject.titre.$error.minlength"
+                          class="faux"><br>le titre est trop court</span>
                     <span ng-show="FormAddProject.titre.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Description* :<br><textarea name="description" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.description"></textarea>
+            <br>
+            Description* :<br><textarea name="description" required ng-minlength="2"
+                                        ng-model="FormAddProject.selectedProjet.description"></textarea>
                  <span ng-show="FormAddProject.description.$dirty">
-                     <span ng-show="FormAddProject.description.$error.required" class="faux"><br>Champs obligatoire</span>
+                     <span ng-show="FormAddProject.description.$error.required"
+                           class="faux"><br>Champs obligatoire</span>
                      <span ng-show="FormAddProject.description.$error.minlength" class="faux"><br>la description est trop court</span>
-                     <span ng-show="FormAddProject.description.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
+                     <span ng-show="FormAddProject.description.$valid"><i
+                             class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
-                <br>
-                Année* :<br><input name="year" required ng-model="FormAddProject.selectedProjet.year" type="number"><span ng-show="FormAddProject.description.$dirty">
+            <br>
+            Année* :<br><input name="year" required ng-model="FormAddProject.selectedProjet.year" type="number"><span
+                ng-show="FormAddProject.description.$dirty">
                      <span ng-show="FormAddProject.year.$error.number" class="faux"><br>Il s'agit d'un chiffre</span>
                      <span ng-show="FormAddProject.year.$error.required" class="faux"><br>Champs obligatoire</span>
                      <span ng-show="FormAddProject.year.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span><br><br>
-                <button ng-disabled="!FormAddProject.$valid" ng-click="addProjet(FormAddProject.selectedProjet)">Ajouter Projet</button>
+            <button ng-disabled="!FormAddProject.$valid" ng-click="addProjet(FormAddProject.selectedProjet)">Ajouter
+                Projet
+            </button>
 
-            </p>
-        </form>
+        </p>
+    </form>
 
-    </div>
+</div>

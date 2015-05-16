@@ -1,32 +1,39 @@
-
 <div ng-controller="MainCtrl">
-<div class="jumbotron">
+    <div class="jumbotron">
 
-    <h2>Qui Recherchez vous ?</h2>
+        <h2>Qui Recherchez vous ?</h2>
 
-    <h3> Etudiant</h3>
-    <form>
-        <h4> Recherchez par nom de famille : </h4>
-        <h5> Dans la liste : </h5>
-  <select  ng-options="user.name for user in users | filter:selectedUserFirstname.surname | filter:searchedName" size="1" ng-model="selectedUserName" ng-change="afficherRole(selectedUser)">
-       </select>
-        <h4> Recherchez par prenom : </h4>
-        <select  ng-options="user.surname for user in users | filter:selectedUserName.name" size="1" ng-model="selectedUserFirstname" ng-change="afficherRole(selectedUser)">
-        </select>
+        <h3> Etudiant</h3>
 
-        <h5> En le tapant : </h5>
-        <input ng-model="searchedName"/><br>
+        <form>
+            <h4> Recherchez par nom de famille : </h4>
+            <h5> Dans la liste : </h5>
+            <select ng-options="user.name for user in users | filter:selectedUserFirstname.surname | filter:searchedName"
+                    size="1" ng-model="selectedUserName" ng-change="afficherRole(selectedUser)">
+            </select>
+            <h4> Recherchez par prenom : </h4>
+            <select ng-options="user.surname for user in users | filter:selectedUserName.name" size="1"
+                    ng-model="selectedUserFirstname" ng-change="afficherRole(selectedUser)">
+            </select>
+
+            <h5> En le tapant : </h5>
+            <input ng-model="searchedName"/><br>
 
 
-        <table class="table table-bordered table-hover">
-            <tr><td>nom</td><td>prenom</td><td>mail</td><td>website</td></tr>
-            <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname | filter:searchedName" >
-                <td><a href="#/{{user.id}}/affiche">{{ user.name }}</a></td>
-                <td><a href="#/{{user.id}}/affiche">{{ user.surname }}</a></td>
-                <td><a href="#/{{user.id}}/affiche">{{ user.email }}</a></td>
-                <td><a href="#/{{user.id}}/affiche">{{ user.website }}</a></td>
-            </tr>
-        </table>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>nom</td>
+                    <td>prenom</td>
+                    <td>mail</td>
+                    <td>website</td>
+                </tr>
+                <tr ng-repeat="user in users | filter:selectedUserName.name | filter:selectedUserFirstname.surname | filter:searchedName">
+                    <td><a href="#/{{user.id}}/affiche">{{ user.name }}</a></td>
+                    <td><a href="#/{{user.id}}/affiche">{{ user.surname }}</a></td>
+                    <td><a href="#/{{user.id}}/affiche">{{ user.email }}</a></td>
+                    <td><a href="#/{{user.id}}/affiche">{{ user.website }}</a></td>
+                </tr>
+            </table>
         </form>
-</div>
+    </div>
 </div>

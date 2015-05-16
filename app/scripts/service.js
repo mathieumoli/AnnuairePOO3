@@ -189,20 +189,6 @@ angular.module('showcaseApp')
 
         }
 
-        this.afficherRole=function(user,success,error){
-
-            $http.get(adresse+'Users/'+user.id+'/Roles')
-                .success(function(data)
-                {
-                    if (data.status === "success") {
-                        success(data.data);
-                    }else
-                        alert('probleme d\'affichage du Role');
-                    error(data.data);
-
-                });
-
-        };
     }])
     //Suppression
     .service('Suppression', ['$http', function Users($http) {
@@ -225,7 +211,8 @@ angular.module('showcaseApp')
                 });
 
         }
-        <!-- marche pas -->
+
+
         this.deleteRole=function(role){
 
             $http.delete(adresse+'Roles/'+role.id)
@@ -304,7 +291,7 @@ angular.module('showcaseApp')
 
         }
 
-        this.getRoleUser=function(id,success,error){
+        this.getRolebyUser=function(id,success,error){
 
             $http.get(adresse+'Users/' + id+'/Roles')
                 .success(function(data) {
@@ -317,7 +304,7 @@ angular.module('showcaseApp')
                 });
         }
 
-        this.getProject=function(id,success,error){
+        this.getProjectbyUser=function(id,success,error){
 
             $http.get(adresse+'Users/'+id+'/Projects')
                 .success(function(data) {
@@ -357,7 +344,7 @@ angular.module('showcaseApp')
 
         }
 
-        this.getRole=function(user,project,success,error){
+        this.getRolebyUserandProject=function(user,project,success,error){
 
             $http.get(adresse+'/Roles?ProjectId='+project.id+'&UserId=' + user.id)
                 .success(function(data) {
