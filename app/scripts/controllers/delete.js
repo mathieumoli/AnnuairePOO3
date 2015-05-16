@@ -8,15 +8,15 @@
  * Controller of the showcaseApp
  */
 angular.module('showcaseApp')
-    .controller('DeleteCtrl', ['$scope', '$http', '$routeParams','Suppression', function ($scope, $http, $routeParams,Suppression) {
+    .controller('DeleteCtrl', ['$scope', '$http', '$routeParams','Suppression','Data', function ($scope, $http, $routeParams,Suppression,Data) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
-        Suppression.getUsers(0,function(data){$scope.users=data},function(data){})
-        Suppression.getProjects(0,function(data){$scope.projects=data},function(data){})
-        Suppression.getRoles(0,function(data){$scope.roles=data},function(data){})
+        Data.getUsers(0,function(data){$scope.users=data},function(data){})
+        Data.getProjects(0,function(data){$scope.projects=data},function(data){})
+        Data.getRoles(0,function(data){$scope.roles=data},function(data){})
 
 
         $scope.deleteUser=function(user){
@@ -25,9 +25,16 @@ angular.module('showcaseApp')
 
         }
 
+        $scope.afficherRole=function(user,project){
+            Suppression.getRolebyUserandProject(user, project, function (data) {
+                    $scope.role = data[0];
+                }
+                , function (data) {
+                });
+        }
         <!-- marche pas -->
-        $scope.deleteRole=function(user,role){
-            Suppression.deleteRole(user,role,function(data){},function(data){});
+        $scope.deleteRole=function(role){
+            Suppression.deleteRole(role,function(data){},function(data){});
         }
 
 
@@ -36,9 +43,11 @@ angular.module('showcaseApp')
 
         }
 
-        $scope.afficherRole=function(user){
-            Suppression.afficherRole(user,function(data){$scope.roles = data;},function(data){})
+        $scope.afficherProjet = function (user) {
+            Suppression.getProjectOfUser(user.id, function (data) {
+                $scope.projectsUser = data
+            }, function (data) {
+            });
+        }
 
-
-        };
     }]);

@@ -56,3 +56,10 @@ verifier les selects. Je vérifie donc après le clic sur le bouton.
 * Ajout d'un input de recherche pour l'utilisateur
 
 ##Affichage Projet OPERATIONNEL revoir peut être l'affichage du tableau
+
+##Modification OPERATIONNELLE
+
+* Cependant, je considere, comme au départ dans ce projet, que un role est*
+ affecté à un utilisateur pour un projet (cela semble logique...)
+
+##Suppression OPERATIONNELLE

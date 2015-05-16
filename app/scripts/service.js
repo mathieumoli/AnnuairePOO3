@@ -226,9 +226,9 @@ angular.module('showcaseApp')
 
         }
         <!-- marche pas -->
-        this.deleteRole=function(user,role){
+        this.deleteRole=function(role){
 
-            $http.delete(adresse+'Projects/'+role.ProjectId+'/Users/'+user.id)
+            $http.delete(adresse+'Roles/'+role.id)
                 .success(function(data)
                 {
                     if (data.status === 'success') {
@@ -242,6 +242,20 @@ angular.module('showcaseApp')
 
                 });
 
+        }
+
+        this.getProjectOfUser=function(id,success,error){
+
+            $http.get(adresse+'Users/'+id+'/Projects')
+                .success(function(data) {
+                    if (data.status === "success") {
+                        success(data.data);
+
+                    }else
+                        error(data.data);
+
+
+                });
         }
 
 
@@ -262,18 +276,17 @@ angular.module('showcaseApp')
 
         }
 
-        this.afficherRole=function(user){
-            $scope.currentUser=user;
-            $http.get(adresse+'Users/'+user.id+'/Roles')
-                .success(function(data)
-                {
+        this.getRolebyUserandProject=function(user,project,success,error){
+
+            $http.get(adresse+'Roles?ProjectId='+project.id+'&UserId=' + user.id)
+                .success(function(data) {
                     if (data.status === "success") {
-                        $scope.roles = data.data;
-                    }
+                        success(data.data);
+                    }else{
+                        error(data.data);}
 
                 });
-
-        };
+        }
 
     }])
 

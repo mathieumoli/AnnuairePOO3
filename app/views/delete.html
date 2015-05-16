@@ -7,33 +7,34 @@
 
         <h3> Etudiant</h3>
         <h4> Recherchez par nom de famille : </h4>
-        <form>
+        <form name="FormDeleteUser" novalidate>
             <select  ng-options="user.name for user in users" size="1" ng-model="selectedUser" ng-change="afficherRole(selectedUser)">
             </select>
 
-            <p>
                 Nom :<br>{{selectedUser.name}}<br>
                 Prénom :<br>{{selectedUser.surname}}<br>
                 Email :<br>{{selectedUser.email}}<br>
                 Website:<br>{{selectedUser.website}}<br>
 
                 <button ng-click="deleteUser(selectedUser)">Supprimer User</button>
-            </p>
+            </form>
             <h4> Rôle : </h4><br>
-            <h5> Choisir un projet</h5>
-            <select  ng-options="user.name for user in users" size="1" ng-model="selectedUser" ng-change="afficherRole(selectedUser)">
-        </select><br>
-            <select ng-options="role.ProjectId for role in roles | filter:selectedUser.id" size="1" ng-model="selectedRole"></select><br>
-            Statut :<br> {{selectedRole.name}}<br>
-            UserId:<br>{{selectedRole.UserId}}<br>
-            ProjetId:<br>{{selectedRole.ProjectId}}<br>
-            <button ng-click="deleteRole(selectedUser,selectedRole)">Supprimer Role</button>
+            <h5> Choisir un utilisateur</h5>
+            <form name="FormDeleteRole" novalidate>
+                <select  ng-options="user.name for user in users" size="1" ng-model="FormDeleteRole.selectedUser" ng-change="afficherProjet(FormDeleteRole.selectedUser)">
+                </select><br>
+                <h5> Choisir un projet</h5>
+            <select ng-options="project.title for project in projectsUser" size="1" ng-model="FormDeleteRole.selectedProject" ng-change="afficherRole(FormDeleteRole.selectedUser,FormDeleteRole.selectedProject)"></select><br>
+            Statut :<br> {{role.name}}<br>
+            UserId:<br>{{role.UserId}}<br>
+            ProjetId:<br>{{role.ProjectId}}<br>
+            <button ng-click="deleteRole(role)">Supprimer Role</button>
 
 
         </form>
 
         <h3>Projets </h3>
-        <form>
+        <form name="FormDeleteProject" novalidate>
             <select  ng-options="project.title for project in projects" size="1" ng-model="selectedProjet"></select>
             <p>
 
