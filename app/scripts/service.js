@@ -3,9 +3,7 @@
  */
 var adresse="http://poo-ihm-2015-rest.herokuapp.com/api/";
 angular.module('showcaseApp')
-
-    .service('Modification', ['$http', function Users($http) {
-
+    .service('Data',['$http', function($http){
         this.getUsers=function(user,success,error){
             $http.get(adresse+'Users')
                 .success(function(data) {
@@ -27,6 +25,22 @@ angular.module('showcaseApp')
                         error(data.data);
                 });
         }
+
+        this.getRoles=function(id,success,error){
+            $http.get(adresse+'Roles')
+                .success(function(data) {
+                    if(data.status==='success'){
+                        success(data.data);
+                    }
+                    else
+                        error(data.data);
+                });
+        }
+
+    }])
+
+    .service('Modification', ['$http', function($http) {
+
         this.modifierUser=function(user,success,error){
 
             $http.put(adresse+'Users/'+user.id,user)
@@ -94,27 +108,6 @@ angular.module('showcaseApp')
     //service d'ajout
     .service('Ajout', ['$http', function Users($http) {
 
-        this.getUsers=function(user,success,error){
-            $http.get(adresse+'Users')
-                .success(function(data) {
-                    if(data.status==='success'){
-                        success(data.data);
-                    }
-                    else
-                        error(data.data);
-                });
-        }
-
-        this.getProjects=function(user,success,error){
-            $http.get(adresse+'Projects')
-                .success(function(data) {
-                    if(data.status==='success'){
-                        success(data.data);
-                    }
-                    else
-                        error(data.data);
-                });
-        }
 
         this.addUser=function(user,success,error){
 
@@ -186,38 +179,7 @@ angular.module('showcaseApp')
     //Suppression
     .service('Suppression', ['$http', function Users($http) {
 
-        this.getUsers=function(user,success,error){
-            $http.get(adresse+'Users')
-                .success(function(data) {
-                    if(data.status==='success'){
-                        success(data.data);
-                    }
-                    else
-                        error(data.data);
-                });
-        }
 
-        this.getProjects=function(user,success,error){
-            $http.get(adresse+'Projects')
-                .success(function(data) {
-                    if(data.status==='success'){
-                        success(data.data);
-                    }
-                    else
-                        error(data.data);
-                });
-        }
-
-        this.getRoles=function(user,success,error){
-            $http.get(adresse+'Roles')
-                .success(function(data) {
-                    if(data.status==='success'){
-                        success(data.data);
-                    }
-                    else
-                        error(data.data);
-                });
-        }
 
         this.deleteUser=function(user){
 
@@ -352,6 +314,32 @@ angular.module('showcaseApp')
 
                 });
 
+        }
+        this.getRoleOfUser=function(user,success,error){
+
+            $http.get(adresse+'Users/' + user.id+'/Roles')
+                .success(function(data) {
+                    if (data.status == "success") {
+                        success(data.data);
+                    }else{
+
+                        error(data.data);}
+
+                });
+        }
+
+        this.getRole=function(user,project,success,error){
+
+            $http.get(adresse+'/Roles?ProjectId='+project.id+'&UserId=' + user.id)
+                .success(function(data) {
+                    if (data.status == "success") {
+                        alert('recupOkRole');
+                        success(data.data);
+                    }else{
+                        alert('recupPasOK');
+                        error(data.data);}
+
+                });
         }
 
     }])
