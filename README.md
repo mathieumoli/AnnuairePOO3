@@ -20,7 +20,7 @@ interagissant avec le service REST mis à votre
 disposition.
 Votre application doit être capable d'effectuer les actions suivante pour les utilisateurs et les projets :
 
-•Création
+•~~Création~~ **OPERATIONNEL**
 •Affichage (liste et détail d'un élément en particulier)
 •Mise à jour
 •Suppression
@@ -53,4 +53,4 @@ verifier les selects. Je vérifie donc après le clic sur le bouton.
 
 ## Mise en place dans Ajout, et Main (affichage de tous les Users),Suppression
 
-#
+# Ajout d'un input de recherche pour l'utilisateur
