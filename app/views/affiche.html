@@ -1,4 +1,4 @@
-<div class="cadreContact">
+
   <div ng-controller="AfficheCtrl">
     <h2 align="center">Aperçu Utilisateur</h2>
     <table class="table table-bordered table-hover">
@@ -7,12 +7,12 @@
       <tr><td>Prenom</td><td>{{ CurrentUser.surname }}</td></tr>
       <tr><td>Mail</td><td>{{ CurrentUser.email }}</td></tr>
       <tr><td>Site Internet</td><td>{{ CurrentUser.website }}</td></tr>
-      </table>
+      </table><br>
     Role(s)
     <table ng-repeat="role in roles" class="table table-bordered table-hover">
       <tr><td>Id du Projet</td><td>{{ role.ProjectId }}</td><td>Role</td><td>{{ role.name }}</td></tr>
 
-    </table>
+    </table><br>
     Projet(s) Lié(s)
       <table ng-repeat="proj in projectsforUser" class="table table-bordered table-hover">
         <tr><td>Nom du Projet</td><td>{{ proj.title }}</td></tr>
@@ -20,4 +20,3 @@
       <tr><td>Année</td><td>{{ proj.year }}</td></tr>
     </table>
       </div>
-</div>

@@ -66,6 +66,8 @@ angular.module('showcaseApp')
                         alert('Modification du role de l\'utilisateur faite !');
                         success(data.data)
                     } else {
+                        alert('Erreur lors de la modification du role !');
+
                         error(data.data);
                     }
 
@@ -90,7 +92,7 @@ angular.module('showcaseApp')
 
         }
 
-        this.afficherRole=function(user,success,error){
+        this.afficherRolebyUser=function(user,success,error){
 
             $http.get(adresse+'Users/'+user.id+'/Roles')
                 .success(function(data)
@@ -104,6 +106,32 @@ angular.module('showcaseApp')
                 });
 
         };
+
+        this.getProjectOfUser=function(id,success,error){
+
+            $http.get(adresse+'Users/'+id+'/Projects')
+                .success(function(data) {
+                    if (data.status === "success") {
+                        success(data.data);
+
+                    }else
+                        error(data.data);
+
+
+                });
+        }
+
+        this.getRolebyUserandProject=function(user,project,success,error){
+
+            $http.get(adresse+'Roles?ProjectId='+project.id+'&UserId=' + user.id)
+                .success(function(data) {
+                    if (data.status === "success") {
+                        success(data.data);
+                    }else{
+                        error(data.data);}
+
+                });
+        }
     }])
     //service d'ajout
     .service('Ajout', ['$http', function Users($http) {
@@ -315,28 +343,14 @@ angular.module('showcaseApp')
                 });
 
         }
-        this.getRoleOfUser=function(user,success,error){
-
-            $http.get(adresse+'Users/' + user.id+'/Roles')
-                .success(function(data) {
-                    if (data.status == "success") {
-                        success(data.data);
-                    }else{
-
-                        error(data.data);}
-
-                });
-        }
 
         this.getRole=function(user,project,success,error){
 
             $http.get(adresse+'/Roles?ProjectId='+project.id+'&UserId=' + user.id)
                 .success(function(data) {
                     if (data.status == "success") {
-                        alert('recupOkRole');
                         success(data.data);
                     }else{
-                        alert('recupPasOK');
                         error(data.data);}
 
                 });

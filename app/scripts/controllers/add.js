@@ -8,18 +8,18 @@
  * Controller of the showcaseApp
  */
 angular.module('showcaseApp')
-    .controller('AddCtrl', ['$scope', '$http', '$routeParams','Ajout', function ($scope, $http, $routeParams,Ajout) {
+    .controller('AddCtrl', ['$scope', '$http', '$routeParams','Ajout','Data', function ($scope, $http, $routeParams,Ajout,Data) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
 
-        Ajout.getUsers(0,function(data){$scope.users=data},function(data){})
-        Ajout.getProjects(0,function(data){$scope.projects=data},function(data){})
+        Data.getUsers(0,function(data){$scope.users=data},function(data){})
+        Data.getProjects(0,function(data){$scope.projects=data},function(data){})
+
         $scope.addUser=function(user){
             Ajout.addUser(user);
-
 
         }
 
@@ -46,10 +46,9 @@ angular.module('showcaseApp')
         $scope.addProjet=function(project){
             if(project.year<1){
                 alert("c'est un projet qui a eu lieu avant JC ? Impossible de l'ajouter")
-            }else
-            Ajout.addProjet(project);
-
-
+            }else {
+                Ajout.addProjet(project);
+            }
         }
 
         $scope.afficherRole=function(user){

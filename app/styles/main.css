@@ -201,5 +201,12 @@ vertical-align: bottom;
      padding-top: 60px;
 
    }
+    .h3title{
+        color:red;
+    }
+
+    .faux{
+        color:red;
+    }
 
 }

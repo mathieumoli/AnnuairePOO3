@@ -8,38 +8,75 @@
  * Controller of the showcaseApp
  */
 angular.module('showcaseApp')
-    .controller('EditCtrl', ['$scope', '$http', '$routeParams','Modification', function ($scope, $http, $routeParams,Modification) {
+    .controller('EditCtrl', ['$scope', '$http', '$routeParams', 'Modification', 'Data', function ($scope, $http, $routeParams, Modification, Data) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
 
-        Modification.getUsers(0,function(data){$scope.users=data},function(data){})
-        Modification.getProjects(0,function(data){$scope.projects=data},function(data){})
+        Data.getUsers(0, function (data) {
+            $scope.users = data
+        }, function (data) {
+        })
+        Data.getProjects(0, function (data) {
+            $scope.projects = data
+        }, function (data) {
+        })
 
+        $scope.modifierUser = function (user) {
 
-        $scope.modifierUser=function(user){
-
-        Modification.modifierUser(user,function(data){},function(data){})
-
-        }
-
-        $scope.modifierRole=function(role){
-
-            Modification.modifierRole(role,function(data){},function(data){})
-        }
-
-
-        $scope.modifierProjet=function(project){
-
-            Modification.modifierProjet(project,function(data){},function(data){})
+            Modification.modifierUser(user, function (data) {
+            }, function (data) {
+            })
 
         }
 
-        $scope.afficherRole=function(user){
+        $scope.afficherProjet = function (user) {
+            Modification.getProjectOfUser(user.id, function (data) {
+                $scope.projectsUser = data
+            }, function (data) {
+            });
+        }
 
-            Modification.afficherRole(user,function(data){$scope.roles = data;},function(data){})
+        $scope.afficherRole = function (user, project) {
+            Modification.getRolebyUserandProject(user, project, function (data) {
+                    $scope.role = data[0];
+                }
+                , function (data) {
+                });
+
+        }
+
+
+        $scope.modifierRole = function (nom) {
+
+                $scope.role.name = nom;
+                Modification.modifierRole($scope.role, function (data) {
+                }, function (data) {
+                })
+
+        }
+
+
+        $scope.modifierProjet = function (project) {
+            if (project.year < 1) {
+                alert("c'est un projet qui a eu lieu avant JC ? Impossible de l'ajouter")
+            } else {
+
+                Modification.modifierProjet(project, function (data) {
+                }, function (data) {
+                })
+            }
+
+        }
+
+        $scope.afficherRolebyUser = function (user) {
+
+            Modification.afficherRolebyUser(user, function (data) {
+                $scope.roles = data;
+            }, function (data) {
+            })
 
 
         };
