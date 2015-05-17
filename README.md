@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # POO3IHMSitePerso
 **by Mathieu Molinengo**
 
@@ -12,6 +11,24 @@
 4. Ouvrer bower_components/fontawesome/scss/_variables.scss avec votre éditeur préféré
 5. Editer ligne 4`$fa-font-path:        "../../../bower_components/fontawesome/fonts" !default;`
 
+##Note Pour le correcteur##
+
+*La visualisation d'un Utilisateur doit comprendre les projets auxquels il a participé avec le rôle qu'il*
+*a joué. De même la visualisation d'un Projet doit comprendre la liste des Utilisateurs qui y ont*
+*participé avec leurs rôles.*
+
+* La visualisation d'un utilisateur se fait à partir de la page d'accueil. Après une recherche grace aux selects
+ou à l'input de recherche
+cliquez sur l'utilisateur auquel vous voulez acceder.
+
+* Pour la visualisation d'un projet cliquez sur "afficher un projet", selectionnez le dans le select ou en le tapant dans le input
+
+*En dernier lieu, il serait souhaitable que votre application permette d'associer des utilisateurs à des*
+*projets en précisant leur rôle.*
+
+* L'association se fait lors de l'affichage d'un utilisateur (les projets auxquels il appartient sont affichés, ainsi que son role dans celui-ci) et dans l'affichage des projets nous pouvons acceder à chaque membre de l'equipe avecc son role dans le projet
+* Cependant, je considere, comme au départ dans ce projet, que un role est affecté à un utilisateur pour un projet (cela semble logique...)
+
 #Rendu
 *Travail attendu :*
 
@@ -21,9 +38,9 @@
 *Votre application doit être capable d'effectuer les actions suivante pour les utilisateurs et les projets :*
 
 * ~~Création~~ **OPERATIONNEL**
-* Affichage (liste et détail d'un élément en particulier)
-* Mise à jour
-* Suppression
+* Affichage (liste et détail d'un élément en particulier) **OPERATIONNEL**
+* Mise à jour **OPERATIONNEL**
+* Suppression **OPERATIONNEL**
 
 *La visualisation d'un Utilisateur doit comprendre les projets auxquels il a participé avec le rôle qu'il*
 *a joué. De même la visualisation d'un Projet doit comprendre la liste des Utilisateurs qui y ont*
