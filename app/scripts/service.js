@@ -317,6 +317,24 @@ angular.module('showcaseApp')
 
                 });
         }
+
+        this.getProject=function(role,success,error){
+
+            $http.get(adresse+'Projects/'+role.ProjectId)
+                .success(function(data)
+                {
+                    if (data.status === "success") {
+
+
+                        success(data.data);
+                    }else
+                        alert('probleme d\'affichage du Role');
+                    error(data.data);
+
+                });
+
+        };
+
     }])
     .service('Projet', ['$http', function Users($http) {
 

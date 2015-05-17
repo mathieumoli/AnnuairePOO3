@@ -1,9 +1,7 @@
 <div ng-controller="AfficheCtrl">
-    <h2 align="center">Aperçu Utilisateur</h2>
+    <h2>Aperçu Utilisateur</h2>
     <table class="table table-bordered table-hover">
-        <tr>
-            <td colspan="2">Utilisateur</td>
-        </tr>
+
         <tr>
             <td>Nom</td>
             <td>{{ CurrentUser.name }}</td>
@@ -22,18 +20,18 @@
         </tr>
     </table>
     <br>
-    Role(s)
+    <h2>Role(s)</h2>
     <table ng-repeat="role in roles" class="table table-bordered table-hover">
         <tr>
-            <td>Id du Projet</td>
-            <td>{{ role.ProjectId }}</td>
             <td>Role</td>
             <td>{{ role.name }}</td>
+            <td>Nom du Projet</td>
+            <td>{{ role.ProjectTitle }}</td>
         </tr>
 
     </table>
     <br>
-    Projet(s) Lié(s)
+    <h2>Projet(s) Lié(s)</h2>
     <table ng-repeat="proj in projectsforUser" class="table table-bordered table-hover">
         <tr>
             <td>Nom du Projet</td>

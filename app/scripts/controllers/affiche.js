@@ -20,12 +20,31 @@ angular.module('showcaseApp')
             $scope.CurrentUser = data
         }, function (data) {
         });
+
         Affiche.getRolebyUser($routeParams.userId, function (data) {
+            $scope.roles=new Array();
+
             $scope.roles = data;
+            //MARCHE PAS
+            for(var i=0;i<$scope.roles.length;i++){
+                $scope.roles[i].ProjectTitle='initial';
+                $scope.getProject($scope.roles[i]);
+
+            }
+
         }, function (data) {
         });
+
         Affiche.getProjectbyUser($routeParams.userId, function (data) {
             $scope.projectsforUser = data;
         }, function (data) {
         });
+
+        $scope.getProject=function(role)
+        {
+            Affiche.getProject(role, function (data) {
+                role.ProjectTitle = data.title;
+            }, function (data) {
+            })
+        }
     }]);
