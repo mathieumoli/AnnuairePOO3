@@ -52,7 +52,7 @@ angular.module('showcaseApp')
 
         $scope.deleteUser = function (user) {
 
-            Suppression.deleteUser(user, function (data) { $scope.getUser();
+            Suppression.deleteUser(user, function (data) {
             }, function (data) {
             });
 
@@ -66,14 +66,14 @@ angular.module('showcaseApp')
                 });
         }
         $scope.deleteRole = function (role) {
-            Suppression.deleteRole(role, function (data) {$scope.getRoles();
+            Suppression.deleteRole(role, function (data) {
             }, function (data) {
             });
         }
 
 
         $scope.deleteProjet = function (project) {
-            Suppression.deleteProjet(project, function (data) {$scope.getProject();
+            Suppression.deleteProjet(project, function (data) {
             }, function (data) {
             });
 

@@ -1,5 +1,5 @@
 /**
- * Created by webdev on 5/6/15.
+ * Created by Mathieu Molinengo on 5/6/15.
  */
 var adresse="http://poo-ihm-2015-rest.herokuapp.com/api/";
 angular.module('showcaseApp')
@@ -47,7 +47,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Modification de l\'utilisateur faite !');
+                        alert('Modification de l\'utilisateur faite !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         error(data.data);
@@ -63,7 +64,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Modification du role de l\'utilisateur faite !');
+                        alert('Modification du role de l\'utilisateur faite !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('Erreur lors de la modification du role !');
@@ -82,7 +84,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Modification du projet faite !');
+                        alert('Modification du projet faite !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data);
                     } else {
                         error(data.data);
@@ -143,7 +146,9 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Ajout de l\'utilisateur fait !');
+                        alert('Ajout de l\'utilisateur fait !'
+                            +
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire l\'ajout de l\'utilisateur !');
@@ -159,7 +164,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Ajout du role de l\'utilisateur fait !');
+                        alert('Ajout du role de l\'utilisateur fait !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire l\'ajout du role de l\'utilisateur !'+data.error);
@@ -178,7 +184,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Ajout du projet fait !');
+                        alert('Ajout du projet fait !' +
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire l\'ajout du projet !');
@@ -201,7 +208,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Suppression de l\'utilisateur fait !');
+                        alert('Suppression de l\'utilisateur fait !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire la suppression de l\'utilisateur !');
@@ -219,7 +227,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Suppression du role de l\'utilisateur fait !');
+                        alert('Suppression du role de l\'utilisateur fait !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire la suppression du role de l\'utilisateur !');
@@ -252,7 +261,8 @@ angular.module('showcaseApp')
                 .success(function(data)
                 {
                     if (data.status === 'success') {
-                        alert('Suppression du projet fait !');
+                        alert('Suppression du projet fait !'+
+                            ' Rechargez la page pour voir les modifications');
                         success(data.data)
                     } else {
                         alert('IMPOSSIBLE de faire la suppression du projet !');
