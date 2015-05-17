@@ -6,7 +6,7 @@
     <h3 class="h3title"> Etudiant : </h3>
 
     <form name="FormAddUser" novalidate>
-
+<p>
 
         Nom*:<br><input name="nom" ng-model="FormAddUser.selectedUser.name" required ng-minlength="2"
                         ng-maxlength="20"/>
@@ -16,6 +16,7 @@
         <span ng-show="FormAddUser.nom.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
         </span><br>
+
         Prénom*:<br><input name="prenom" ng-model="FormAddUser.selectedUser.surname" required ng-minlength="2"
                            ng-maxlength="20"/>
         <span ng-show="FormAddUser.prenom.$error.required" class="faux"><br>Champs obligatoire</span>
@@ -29,22 +30,24 @@
             <span ng-show="FormAddUser.email.$dirty">
             <span ng-show="FormAddUser.email.$error.email" class="faux"><br>L'email n'est pas correct</span>
             <span ng-show="FormAddUser.email.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
-
             </span><br>
+
         Website:<br><input name="website" ng-model="FormAddUser.selectedUser.website" type="url"/>
+        <span ng-show="FormAddUser.email.$dirty">
         <span ng-show="FormAddUser.website.$error.url" class="faux"><br>Ce n'est pas un url exemple:"http://www.exemple.com"</span>
         <span ng-show="FormAddUser.website.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
 
-        </span><br>
-
+        </span>
+        <br>
+        <br>
         <button ng-disabled="!FormAddUser.$valid" ng-click="addUser(FormAddUser.selectedUser)">Ajouter Utilisateur
         </button>
-
+</p>
     </form>
-
+    <br>
     <h3 class="h3title"> Rôle : </h3>
 
-    <form name="FormAddRole">
+    <form name="FormAddRole" novalidate>
         <p>
             Statut*: <br><input name="statut" required ng-minlength="2" ng-model="FormAddRole.role.name">
                 <span ng-show="FormAddRole.statut.$dirty">
@@ -67,6 +70,7 @@
                     <span ng-show="FormAddRole.project.$valid"><i class="fa fa-check-square fa-2x"></i><br></span>
                 </span>
             <br>
+            <br>
             <button ng-disabled="!FormAddRole.$valid"
                     ng-click="addRole(FormAddRole.role,FormAddRole.user,FormAddRole.project)">Ajouter Rôle
             </button>
@@ -74,11 +78,12 @@
         </p>
     </form>
 
+    <br>
     <h3 class="h3title">Projets : </h3>
 
-    <form name="FormAddProject">
-        <p>
+    <form name="FormAddProject" novalidate>
 
+        <p>
             Titre* :<br><input name="titre" required ng-minlength="2" ng-model="FormAddProject.selectedProjet.title">
                 <span ng-show="FormAddProject.titre.$dirty">
                     <span ng-show="FormAddProject.titre.$error.required" class="faux"><br>Champs obligatoire</span>
@@ -109,5 +114,7 @@
 
         </p>
     </form>
+
+    <p>*champs requis</p>
 
 </div>

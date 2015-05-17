@@ -1,48 +1,50 @@
 <div ng-controller="AfficheCtrl">
     <h2>Aperçu Utilisateur</h2>
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered">
 
         <tr>
-            <td>Nom</td>
+            <td class="active">Nom</td>
             <td>{{ CurrentUser.name }}</td>
         </tr>
         <tr>
-            <td>Prenom</td>
+            <td class="active">Prenom</td>
             <td>{{ CurrentUser.surname }}</td>
         </tr>
         <tr>
-            <td>Mail</td>
+            <td class="active">Mail</td>
             <td>{{ CurrentUser.email }}</td>
         </tr>
         <tr>
-            <td>Site Internet</td>
+            <td class="active">Site Internet</td>
             <td>{{ CurrentUser.website }}</td>
         </tr>
     </table>
     <br>
     <h2>Role(s)</h2>
-    <table ng-repeat="role in roles" class="table table-bordered table-hover">
-        <tr>
-            <td>Role</td>
-            <td>{{ role.name }}</td>
+    <table class="table table-bordered">
+        <tr class="active">
             <td>Nom du Projet</td>
-            <td>{{ role.ProjectTitle }}</td>
-        </tr>
+            <td>Role</td>
 
+        </tr>
+        <tr ng-repeat="role in roles">
+
+            <td>{{ role.ProjectTitle }}</td>
+            <td>{{ role.name }}</td>
+        </tr>
     </table>
     <br>
     <h2>Projet(s) Lié(s)</h2>
-    <table ng-repeat="proj in projectsforUser" class="table table-bordered table-hover">
-        <tr>
+    <table  class="table table-bordered">
+        <tr class="active">
             <td>Nom du Projet</td>
-            <td>{{ proj.title }}</td>
-        </tr>
-        <tr>
             <td>Description</td>
-            <td>{{ proj.description }}</td>
-        </tr>
-        <tr>
             <td>Année</td>
+
+        </tr>
+        <tr ng-repeat="proj in projectsforUser">
+            <td>{{ proj.title }}</td>
+            <td>{{ proj.description }}</td>
             <td>{{ proj.year }}</td>
         </tr>
     </table>

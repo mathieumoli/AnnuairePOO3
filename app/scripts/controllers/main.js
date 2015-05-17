@@ -19,6 +19,7 @@ angular.module('showcaseApp')
             $scope.users = data
         }, function (data) {
         })
+
         Data.getProjects(0, function (data) {
             $scope.projects = data
         }, function (data) {

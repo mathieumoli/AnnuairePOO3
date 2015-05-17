@@ -9,9 +9,15 @@
             <h4>Description:</h4> {{ selectedProject.description }}<br>
                 <h4>Année:</h4> {{ selectedProject.year }}<br>
                     <h4>Equipe du Projet</h4>
-        <table ng-repeat="person in team" class="table table-bordered table-hover">
-            <tr><td>nom</td><td>prenom</td><td>mail</td><td>website</td><td>role</td></tr>
-            <tr>
+        <table  class="table table-bordered">
+            <tr class="active">
+                <td>nom</td>
+                <td>prenom</td>
+                <td>mail</td>
+                <td>website</td>
+                <td>role</td>
+            </tr>
+            <tr ng-repeat="person in team">
                 <td><a href="#/{{person.id}}/affiche">{{ person.name }}</a></td>
                 <td><a href="#/{{person.id}}/affiche">{{ person.surname }}</a></td>
                 <td><a href="#/{{person.id}}/affiche">{{ person.email }}</a></td>

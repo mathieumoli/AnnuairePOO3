@@ -1,7 +1,7 @@
 <div ng-controller="MainCtrl">
     <div class="jumbotron">
 
-        <h2>Qui Recherchez vous ?</h2>
+        <h2>Que Recherchez vous ?</h2>
 
         <h3> Etudiant</h3>
 
@@ -20,8 +20,8 @@
             <input ng-model="searchedName"/><br><br>
 
             <h5>Cliquez sur l'utilisateur pour avoir des détails</h5>
-            <table class="table table-bordered table-hover">
-                <tr>
+            <table class="table table-bordered">
+                <tr class="active">
                     <td>nom</td>
                     <td>prenom</td>
                     <td>mail</td>
@@ -32,6 +32,25 @@
                     <td><a href="#/{{user.id}}/affiche">{{ user.surname }}</a></td>
                     <td><a href="#/{{user.id}}/affiche">{{ user.email }}</a></td>
                     <td><a href="#/{{user.id}}/affiche">{{ user.website }}</a></td>
+                </tr>
+            </table>
+            <br>
+
+
+            <h3> Projet</h3>
+            <h4>Pour voir les projets en détails cliquez sur l'onglet 'Afficher les projets'</h4>
+            <br>
+            <table class="table table-bordered">
+                <tr class="active">
+                    <td>titre</td>
+                    <td>description</td>
+                    <td>année</td>
+
+                </tr>
+                <tr ng-repeat="project in projects">
+                    <td><a href="#/{{user.id}}/affiche">{{ project.title }}</a></td>
+                    <td><a href="#/{{user.id}}/affiche">{{project.description }}</a></td>
+                    <td><a href="#/{{user.id}}/affiche">{{ project.year}}</a></td>
                 </tr>
             </table>
         </form>

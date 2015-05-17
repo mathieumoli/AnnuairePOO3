@@ -3,44 +3,61 @@
     <div class="jumbotron">
         <!-- Bulles -->
         <h1> Suppression</h1>
-        <h2>Que Recherchez vous ?</h2>
 
-        <h3> Etudiant</h3>
-        <h4> Recherchez par nom de famille : </h4>
+        <h3 class="h3title"> Etudiant</h3>
+
         <form name="FormDeleteUser" novalidate>
-            <select  ng-options="user.name for user in users" size="1" ng-model="selectedUser" ng-change="afficherRole(selectedUser)">
-            </select>
+            <p>
+                <b>Recherchez par nom de famille :</b><br>
 
-                Nom :<br>{{selectedUser.name}}<br>
-                Prénom :<br>{{selectedUser.surname}}<br>
-                Email :<br>{{selectedUser.email}}<br>
-                Website:<br>{{selectedUser.website}}<br>
+
+                <select ng-options="user.name for user in users" size="1" ng-model="selectedUser"
+                        ng-change="afficherRole(selectedUser)">
+                </select><br>
+
+                <b>Nom :</b><br>{{selectedUser.name}}<br>
+                    <b>Prénom :</b><br>{{selectedUser.surname}}<br>
+                        <b>Email :</b><br>{{selectedUser.email}}<br>
+                            <b>Website :</b><br>{{selectedUser.website}}<br>
 
                 <button ng-click="deleteUser(selectedUser)">Supprimer User</button>
-            </form>
-            <h4> Rôle : </h4><br>
-            <h5> Choisir un utilisateur</h5>
-            <form name="FormDeleteRole" novalidate>
-                <select  ng-options="user.name for user in users" size="1" ng-model="FormDeleteRole.selectedUser" ng-change="afficherProjet(FormDeleteRole.selectedUser)">
-                </select><br>
-                <h5> Choisir un projet</h5>
-            <select ng-options="project.title for project in projectsUser" size="1" ng-model="FormDeleteRole.selectedProject" ng-change="afficherRole(FormDeleteRole.selectedUser,FormDeleteRole.selectedProject)"></select><br>
-            Statut :<br> {{role.name}}<br>
-            UserId:<br>{{role.UserId}}<br>
-            ProjetId:<br>{{role.ProjectId}}<br>
-            <button ng-click="deleteRole(role)">Supprimer Role</button>
+            </p>
+        </form>
 
+        <h3 class="h3title"> Rôle : </h3><br>
+
+        <form name="FormDeleteRole" novalidate>
+            <p>
+                <b>Choisir un utilisateur</b><br>
+
+                <select ng-options="user.name for user in users" size="1" ng-model="FormDeleteRole.selectedUser"
+                        ng-change="afficherProjet(FormDeleteRole.selectedUser)">
+                </select><br>
+                <b>Choisir un projet</b><br>
+                <select ng-options="project.title for project in projectsUser" size="1"
+                        ng-model="FormDeleteRole.selectedProject"
+                        ng-change="afficherRole(FormDeleteRole.selectedUser,FormDeleteRole.selectedProject)"></select><br>
+                    <b>Statut :</b><br> {{role.name}}<br>
+                        <b>UserId :</b><br>{{role.UserId}}<br>
+                            <b>ProjetId :</b><br>{{role.ProjectId}}<br>
+                <button ng-click="deleteRole(role)">Supprimer Role</button>
+            </p>
 
         </form>
 
-        <h3>Projets </h3>
-        <form name="FormDeleteProject" novalidate>
-            <select  ng-options="project.title for project in projects" size="1" ng-model="selectedProjet"></select>
-            <p>
+        <h3 class="h3title">Projets </h3>
 
-                Titre :<br>{{selectedProjet.title}}<br>
-                Description :<br>{{selectedProjet.description}}<br>
-                Année :<br>{{selectedProjet.year}}<br>
+
+        <form name="FormDeleteProject" novalidate>
+            <p>
+                <b>Choisir un projet</b><br>
+                <select ng-options="project.title for project in projects" size="1" ng-model="selectedProjet"></select>
+                <br>
+
+
+                <b>Titre :</b><br>{{selectedProjet.title}}<br>
+                    <b>Description :</b><br>{{selectedProjet.description}}<br>
+                        <b>Année :</b><br>{{selectedProjet.year}}<br>
                 <button ng-click="deleteProjet(selectedProjet)">Supprimer Projet</button>
 
             </p>

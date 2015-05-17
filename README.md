@@ -13,6 +13,16 @@
 
 ##Note Pour le correcteur##
 
+*Votre application doit être capable d'effectuer les actions suivante pour les utilisateurs et les projets :*
+
+*Création 
+*Affichage (liste et détail d'un élément en particulier)
+*Mise à jour
+*Suppression
+
+* Les differentes fonctionnalités se font dans les onglets prévus à cet effet. De plus un systeme de verification a été mis en place pour eviter d'ajouter des données erronées
+* l'affichage en tableau se fait sur la page principale pour afficher un utilisateur en détail cliquez sur un des champs du tableau pour le projet utiliser l'onglet "Afficher le projet"
+
 *La visualisation d'un Utilisateur doit comprendre les projets auxquels il a participé avec le rôle qu'il*
 *a joué. De même la visualisation d'un Projet doit comprendre la liste des Utilisateurs qui y ont*
 *participé avec leurs rôles.*
@@ -27,9 +37,9 @@ cliquez sur l'utilisateur auquel vous voulez acceder.
 *projets en précisant leur rôle.*
 
 * L'association se fait lors de l'affichage d'un utilisateur (les projets auxquels il appartient sont affichés, ainsi que son role dans celui-ci) et dans l'affichage des projets nous pouvons acceder à chaque membre de l'equipe avecc son role dans le projet
-* Cependant, je considere, comme au départ dans ce projet, que un role est affecté à un utilisateur pour un projet (cela semble logique...)
+* Cependant, je considere, comme au départ dans ce projet, que un role est affecté à un utilisateur pour un projet (cela semble logique)
 
-#Rendu
+#Sujet
 *Travail attendu :*
 
 *Ce rendu devra contenir votre application Angular*
