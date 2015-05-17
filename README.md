@@ -22,7 +22,7 @@
 
 * Les differentes fonctionnalités se font dans les onglets prévus à cet effet. De plus un systeme de vérification a été mis en place pour eviter d'ajouter des données erronées
 * Après chaque manipulation de la base de donnée (création, modification, suppression) il faut reload la page pour pouvoir par exemple lié un nouvel utilisateur à un projet grace à un role. 
-* Après de multiples essais, le reload des données sans reload de la page et du cache n'a pas pu être faite...
+* Après de multiples essais, le reload des données sans reload de la page et du cache n'a pas pu être fait...
 * l'affichage en tableau se fait sur la page principale pour afficher un utilisateur en détail cliquez sur un des champs du tableau pour le projet utiliser l'onglet "Afficher le projet"
 
 *La visualisation d'un Utilisateur doit comprendre les projets auxquels il a participé avec le rôle qu'il*
